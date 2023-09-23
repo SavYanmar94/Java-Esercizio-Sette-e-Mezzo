@@ -158,10 +158,6 @@ public class Gioco {
 				System.out.println("Hai puntato: " + player.getFichePuntata());
 				System.out.println("Il tuo punteggio attuale è: " + punteggioGiocatore);
 				
-				if (punteggioGiocatore > 7.5) {
-		    		System.out.println("Hai superato 7.5!");
-		    		player.setFicheIniziali(player.getFicheIniziali() - player.getFichePuntata());
-		    		System.out.println("Ora le tue fiches sono: " + player.getFicheIniziali());}
 				
 	}
 		
@@ -174,28 +170,24 @@ public class Gioco {
 
 	punteggioBanco = 0;
   
-	
-    	if (punteggioGiocatore > 7.5) {
-    		System.out.println("Hai superato 7.5!");
-    		player.setFicheIniziali(player.getFicheIniziali() - player.getFichePuntata());
-    		System.out.println("Ora le tue fiches sono: " + player.getFicheIniziali());
-    	
-    		if (player.getFicheIniziali() == 0) {
-    			System.out.println("La tue fiches sono a zero. Game over!");
-    			carte.clear();
-    			play();  //questo è il metodo generale per reiniziare tutto
-    			
-    		} 
- 
-    		
-    	Finemano();
-    		
-    	// ho chiuso l'if punteggio maggiore di 7.5 , sto ancora nel while
-    		
-        } else { 
     	
        while (true) {
-
+    	   
+    	   if (punteggioGiocatore > 7.5) {
+       		System.out.println("Hai superato 7.5!");
+       		player.setFicheIniziali(player.getFicheIniziali() - player.getFichePuntata());
+       		System.out.println("Ora le tue fiches sono: " + player.getFicheIniziali());
+       	
+       		if (player.getFicheIniziali() == 0) {
+       			System.out.println("La tue fiches sono a zero. Game over!");
+       			carte.clear();
+       			play();  //questo è il metodo generale per reiniziare tutto
+       			
+       		} 
+    
+       	   Finemano();
+       				
+           } 
 
     		System.out.println("Resti o vuoi un altra carta? \nDigita 1 per restare o 2 per avere un altra carta");
 		
@@ -211,7 +203,10 @@ public class Gioco {
     				//Poi se perdo mi vengono tolti il doppio dei soldi 
     				
     				String CartaBanco = carte.get(random.nextInt(carte.size()));
-			    
+    				
+    				
+    				System.out.println("Il banco sta giocando...");
+    				Thread.sleep(3000);
 			    	System.out.println("La carta uscita è: " + CartaBanco);
 			    
 			 
@@ -296,7 +291,6 @@ public class Gioco {
 	}
     
 
-	}
 
 
 	public void Finemano() throws IOException, NumberFormatException, InterruptedException {
