@@ -90,23 +90,6 @@ public class Gioco {
 			    System.out.println("\nLa carta uscita è: " + CartaRicevuta);
 				
 			
-				
-				/* codice scritto da me
-				 * for ( int i = 0; i < carte.size(); i++ ){
-					
-					if (i >= 0 && i < 7 || i >= 10 && i < 17 || i >= 20 && i < 27 || i >= 30 && i < 37) {
-						if (CartaRicevuta.equals(carte.get(i+1))) {
-						punteggioGiocatore = (int)carte.get(i+1).charAt(0);
-						carte.remove(CartaRicevuta);
-					} 
-						
-					} else if (i > 6 && i < 10 || i > 16 && i < 20 || i > 26 && i < 30 || i >= 36 && i < 40) {
-						if (CartaRicevuta.equals(carte.get(i+1))) {
-							punteggioGiocatore += 0.5 ;
-							carte.remove(CartaRicevuta);
-						}
-					}
-				}*/
 			    
 			    for (int i = 0; i < carte.size(); i++) {
 			        String carta = carte.get(i);
@@ -174,6 +157,11 @@ public class Gioco {
 				
 				System.out.println("Hai puntato: " + player.getFichePuntata());
 				System.out.println("Il tuo punteggio attuale è: " + punteggioGiocatore);
+				
+				if (punteggioGiocatore > 7.5) {
+		    		System.out.println("Hai superato 7.5!");
+		    		player.setFicheIniziali(player.getFicheIniziali() - player.getFichePuntata());
+		    		System.out.println("Ora le tue fiches sono: " + player.getFicheIniziali());}
 				
 	}
 		
@@ -326,7 +314,7 @@ public class Gioco {
     		} else if (sceltaFineMano.equals("2")) {
     			System.out.println("Cambio in corso..." );
     			Thread.sleep(4000);
-    			System.out.println("Il tuo saldo è: " + ficheIniziali + " euro");
+    			System.out.println("Il tuo saldo è: " + player.getFicheIniziali() + " euro");
     			System.out.println("Grazie di aver giocato!");
     			System.exit(0);
     		} else {
